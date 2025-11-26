@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Container, Typography, Paper, Grid, Avatar } from "@mui/material";
+import { Box, Container, Typography, Paper, Avatar } from "@mui/material";
 import { Favorite, CalendarToday, Public } from '@mui/icons-material';
 import About from "../components/About"; // import reusable About section
 
@@ -70,32 +70,47 @@ const AboutPage: React.FC = () => {
 
       {/* Milestones / Journey */}
       <Box sx={{ py: 8, bgcolor: "background.default" }}>
-        <Container maxWidth="md">
-          <Typography variant="h4" align="center" gutterBottom>
-            Our Journey
-          </Typography>
-          <Grid container spacing={4} sx={{ mt: 4 }}>
-            {milestones.map((milestone, index) => (
-              <Grid item xs={12} key={index}>
-                <Paper sx={{ p: 3, display: "flex", gap: 2, alignItems: "flex-start" }}>
-                  <Avatar sx={{ bgcolor: "primary.light", color: "primary.main" }}>
-                    {milestone.icon}
-                  </Avatar>
-                  <Box>
-                    <Typography variant="subtitle2" color="primary.main">
-                      {milestone.year}
-                    </Typography>
-                    <Typography variant="h6">{milestone.title}</Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {milestone.description}
-                    </Typography>
-                  </Box>
-                </Paper>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
-      </Box>
+  <Container maxWidth="md">
+    <Typography variant="h4" align="center" gutterBottom>
+      Our Journey
+    </Typography>
+
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column", // stack on mobile
+        gap: 4,
+        mt: 4,
+      }}
+    >
+      {milestones.map((milestone, index) => (
+        <Paper
+          key={index}
+          sx={{
+            p: 3,
+            display: "flex",
+            gap: 2,
+            alignItems: "flex-start",
+            flexDirection: { xs: "column", md: "row" }, // responsive layout
+          }}
+        >
+          <Avatar sx={{ bgcolor: "primary.light", color: "primary.main" }}>
+            {milestone.icon}
+          </Avatar>
+          <Box>
+            <Typography variant="subtitle2" color="primary.main">
+              {milestone.year}
+            </Typography>
+            <Typography variant="h6">{milestone.title}</Typography>
+            <Typography variant="body2" color="text.secondary">
+              {milestone.description}
+            </Typography>
+          </Box>
+        </Paper>
+      ))}
+    </Box>
+  </Container>
+</Box>
     </Box>
   );
 };

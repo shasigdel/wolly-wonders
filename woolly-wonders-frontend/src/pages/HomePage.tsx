@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
-import { Box, Button, Container, Grid, Paper, Typography, CardMedia } from "@mui/material";
+import { Box, Button, Container, Paper, Typography, CardMedia } from "@mui/material";
 
 import Values from "../components/Values";
 
@@ -32,31 +32,38 @@ const HomePage: React.FC = () => {
       {/* Hero Carousel */}
       <Box sx={{ bgcolor: "#f0f0f0", py: { xs: 2, sm: 4, md: 6 } }}>
         <Container maxWidth="lg" sx={{ display: "flex", justifyContent: "center" }}>
-          <Slider {...settings} style={{ width: "80%" }}>
-            {carouselImages.map((img, index) => (
-              <Box key={index}>
-                <CardMedia
-                  component="img"
-                  image={img}
-                  alt={`Slide ${index + 1}`}
-                  sx={{
-                    width: "100%",
-                    height: { xs: 250, sm: 350, md: 500 },
-                    objectFit: "cover",
-                    borderRadius: 2,
-                    mx: "auto",
-                  }}
-                />
-              </Box>
-            ))}
-          </Slider>
+          <Box sx={{ width: "80%" }}>
+            <Slider {...settings}>
+              {carouselImages.map((img, index) => (
+                <Box key={index}>
+                  <CardMedia
+                    component="img"
+                    image={img}
+                    alt={`Slide ${index + 1}`}
+                    sx={{
+                      width: "100%",
+                      height: { xs: 250, sm: 350, md: 500 },
+                      objectFit: "cover",
+                      borderRadius: 2,
+                    }}
+                  />
+                </Box>
+              ))}
+            </Slider>
+          </Box>
         </Container>
       </Box>
 
       {/* Welcome Section */}
       <Box py={12} bgcolor="#ffffff">
         <Container maxWidth="md">
-          <Box textAlign="center">
+          <Box
+            textAlign="center"
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            gap={3}
+          >
             <Typography variant="h3" fontWeight="bold" color="text.primary" gutterBottom>
               Welcome to Woolly Wonders
             </Typography>
@@ -67,32 +74,29 @@ const HomePage: React.FC = () => {
               artisans in Nepal.
             </Typography>
 
-            <Grid container spacing={3} justifyContent="center">
-              <Grid item>
-                <Button
-                  variant="contained"
-                  size="large"
-                  component={Link}
-                  to="/products"
-                  endIcon={<ArrowRightAltIcon />}
-                  sx={{ px: 4, py: 1.5, borderRadius: 2 }}
-                >
-                  Shop Our Collection
-                </Button>
-              </Grid>
+            {/* Buttons */}
+            <Box display="flex" flexWrap="wrap" gap={2} justifyContent="center">
+              <Button
+                variant="contained"
+                size="large"
+                component={Link}
+                to="/products"
+                endIcon={<ArrowRightAltIcon />}
+                sx={{ px: 4, py: 1.5, borderRadius: 2 }}
+              >
+                Shop Our Collection
+              </Button>
 
-              <Grid item>
-                <Button
-                  variant="outlined"
-                  size="large"
-                  component={Link}
-                  to="/about"
-                  sx={{ px: 4, py: 1.5, borderRadius: 2, borderWidth: 2 }}
-                >
-                  Learn Our Story
-                </Button>
-              </Grid>
-            </Grid>
+              <Button
+                variant="outlined"
+                size="large"
+                component={Link}
+                to="/about"
+                sx={{ px: 4, py: 1.5, borderRadius: 2, borderWidth: 2 }}
+              >
+                Learn Our Story
+              </Button>
+            </Box>
           </Box>
         </Container>
       </Box>
