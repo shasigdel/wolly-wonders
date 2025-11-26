@@ -10,11 +10,11 @@ import IconButton from '@mui/material/IconButton';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
 
 import MenuIcon from '@mui/icons-material/Menu';
 import TerrainIcon from '@mui/icons-material/Terrain';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import ListItemButton from '@mui/material/ListItemButton';
 
 const Header: React.FC = () => {
   const location = useLocation();
@@ -105,26 +105,23 @@ const Header: React.FC = () => {
       {/* Mobile Drawer */}
       <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
         <Box sx={{ width: 220, pt: 2 }}>
-          <List>
-            {navLinks.map((link) => (
-              <ListItem
-                button
-                key={link.path}
+        <List>
+          {navLinks.map((link) => (
+            <ListItem key={link.path} disablePadding>
+              <ListItemButton
                 component={Link}
                 to={link.path}
                 onClick={() => setOpen(false)}
+                sx={{
+                  fontWeight: isActive(link.path) ? 'bold' : 'normal',
+                  color: isActive(link.path) ? '#1e40af' : 'inherit',
+                }}
               >
-                <ListItemText
-                  primary={link.label}
-                  primaryTypographyProps={{
-                    fontSize: "1rem",
-                    fontWeight: isActive(link.path) ? "bold" : "normal",
-                    color: isActive(link.path) ? "#1e40af" : "inherit"
-                  }}
-                />
-              </ListItem>
-            ))}
-          </List>
+                {link.label}
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
         </Box>
       </Drawer>
     </>
