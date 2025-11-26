@@ -19,7 +19,7 @@ const Values: React.FC = () => {
       icon: <FavoriteIcon fontSize="large" />,
       title: 'Ethical Craftsmanship',
       description:
-        'All products are handmade by skilled Himalayan artisans, respecting tradition and fair trade.',
+        'All products are handmade by skilled Himalayan artisans, respecting tradition.',
       bgColor: '#E3F2FD',
       iconColor: '#1976D2',
     },

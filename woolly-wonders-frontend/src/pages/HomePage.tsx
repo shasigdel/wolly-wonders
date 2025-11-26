@@ -33,12 +33,12 @@ const HomePage: React.FC = () => {
       <Box
   sx={{
     display: "flex",
-    flexDirection: { xs: "column", md: "row" }, // stack on mobile, side-by-side on desktop
+    flexDirection: { xs: "column", md: "row" },
     alignItems: "center",
     justifyContent: "center",
     bgcolor: "white",
-    py: { xs: 2, sm: 4, md: 6 },
-    gap: { xs: 10, md: 10 }, // spacing between sections
+    py: { xs: 1, sm: 3, md: 6 }, // reduced padding on mobile
+    gap: { xs: 8, md: 10 }, // spacing between logo and text
   }}
 >
   {/* Logo */}
@@ -47,7 +47,7 @@ const HomePage: React.FC = () => {
     src="/woolly-wonders.png"
     alt="Woolly Wonders Logo"
     sx={{
-      width: { xs: 150, sm: 250, md: 350, lg: 400 },
+      width: { xs: 200, sm: 300, md: 350, lg: 400 }, // slightly bigger on mobile
       height: "auto",
     }}
   />
@@ -56,7 +56,7 @@ const HomePage: React.FC = () => {
   <Box
     sx={{
       textAlign: { xs: "center", md: "left" },
-      maxWidth: { xs: "100%", md: "500px" }, // control width on larger screens
+      maxWidth: { xs: "100%", md: "500px" },
     }}
   >
     <Typography variant="h3" fontWeight="bold" color="text.primary" gutterBottom>
@@ -69,7 +69,6 @@ const HomePage: React.FC = () => {
       artisans in Nepal.
     </Typography>
 
-    {/* Buttons */}
     <Box display="flex" flexWrap="wrap" gap={2} justifyContent={{ xs: "center", md: "flex-start" }}>
       <Button
         variant="contained"
@@ -162,32 +161,68 @@ const HomePage: React.FC = () => {
       {/* Values Section */}
       <Values />
 
-      {/* Christmas Market Section */}
-      <Box py={12} sx={{ background: "linear-gradient(90deg, #2563EB, #4F46E5)" }}>
-        <Container maxWidth="md">
-          <Paper elevation={6} sx={{ p: 6, borderRadius: 3, textAlign: "center" }}>
-            <Typography variant="h4" fontWeight="bold" color="text.primary" gutterBottom>
-              Find Us at Christmas Markets
-            </Typography>
+     {/* Christmas Market Section */}
+<Box py={12} sx={{ background: "linear-gradient(90deg, #2563EB, #4F46E5)" }}>
+  <Container maxWidth="lg"> {/* Use larger container */}
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: { xs: "column", md: "row" },
+        alignItems: "center",
+        justifyContent: "center",
+        gap: { xs: 6, md: 4 }, // balanced spacing
+      }}
+    >
+      {/* Image */}
+      <Box
+        component="img"
+        src="/baltimore-christmas.png"
+        alt="Baltimore Christmas Village"
+        sx={{
+          flex: { md: 1 },
+          width: { xs: "100%", md: "50%" }, // take half space on desktop
+          height: "auto",
+          borderRadius: 3,
+          objectFit: "contain",
+        }}
+      />
 
-            <Typography variant="h6" color="text.secondary" mb={4}>
-              We've been proud participants in Christmas markets since our beginning. 
-              Come visit us to see and feel the quality of our products in person!
-            </Typography>
+      {/* Text Card */}
+      <Paper
+        elevation={6}
+        sx={{
+          flex: { md: 1 },
+          p: { xs: 4, md: 6 },
+          borderRadius: 3,
+          textAlign: "center",
+          width: { xs: "100%", md: "50%" }, // ensure proper width
+        }}
+      >
+        <Typography variant="h4" fontWeight="bold" color="text.primary" gutterBottom>
+          Find Us at Christmas Village
+        </Typography>
 
-            <Button
-              variant="contained"
-              size="large"
-              component={Link}
-              to="/contact"
-              endIcon={<ArrowRightAltIcon />}
-              sx={{ px: 4, py: 1.5, borderRadius: 2 }}
-            >
-              Get In Touch
-            </Button>
-          </Paper>
-        </Container>
-      </Box>
+        <Typography variant="h6" color="text.secondary" mb={4}>
+          We've been proud participants in Christmas Village since our beginning. 
+          Come visit us to see and feel the quality of our products in person!
+        </Typography>
+
+        <Button
+          variant="contained"
+          size="large"
+          component={Link}
+          to="/contact"
+          endIcon={<ArrowRightAltIcon />}
+          sx={{ px: 4, py: 1.5, borderRadius: 2 }}
+        >
+          Get In Touch
+        </Button>
+      </Paper>
+    </Box>
+  </Container>
+</Box>
+
+
     </Box>
   );
 };

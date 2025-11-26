@@ -60,8 +60,7 @@ const AboutPage: React.FC = () => {
           </Typography>
           <Paper sx={{ p: 4, bgcolor: "primary.light", color: "primary.contrastText" }}>
             <Typography variant="body1">
-              To preserve and celebrate traditional Himalayan craftsmanship while supporting fair trade
-              practices and sustainable sourcing. We believe every purchase should make a positive impact
+              To preserve and celebrate traditional Himalayan craftsmanship while supporting Nepali crafmanship. We believe every purchase should make a positive impact
               on both the artisan and the environment.
             </Typography>
           </Paper>
