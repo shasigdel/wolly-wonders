@@ -28,7 +28,74 @@ const HomePage: React.FC = () => {
   };
 
   return (
+    
     <Box>
+      <Box
+  sx={{
+    display: "flex",
+    flexDirection: { xs: "column", md: "row" }, // stack on mobile, side-by-side on desktop
+    alignItems: "center",
+    justifyContent: "center",
+    bgcolor: "white",
+    py: { xs: 2, sm: 4, md: 6 },
+    gap: { xs: 10, md: 10 }, // spacing between sections
+  }}
+>
+  {/* Logo */}
+  <Box
+    component="img"
+    src="/woolly-wonders.png"
+    alt="Woolly Wonders Logo"
+    sx={{
+      width: { xs: 150, sm: 250, md: 350, lg: 400 },
+      height: "auto",
+    }}
+  />
+
+  {/* Welcome Section */}
+  <Box
+    sx={{
+      textAlign: { xs: "center", md: "left" },
+      maxWidth: { xs: "100%", md: "500px" }, // control width on larger screens
+    }}
+  >
+    <Typography variant="h3" fontWeight="bold" color="text.primary" gutterBottom>
+      Welcome to Woolly Wonders
+    </Typography>
+
+    <Typography variant="h6" color="text.secondary" mb={4} lineHeight={1.7}>
+      Since 2013, we've been bringing authentic Himalayan craftsmanship to Delaware 
+      and beyond. Every piece in our collection is handmade with care by skilled 
+      artisans in Nepal.
+    </Typography>
+
+    {/* Buttons */}
+    <Box display="flex" flexWrap="wrap" gap={2} justifyContent={{ xs: "center", md: "flex-start" }}>
+      <Button
+        variant="contained"
+        size="large"
+        component={Link}
+        to="/products"
+        endIcon={<ArrowRightAltIcon />}
+        sx={{ px: 4, py: 1.5, borderRadius: 2 }}
+      >
+        Shop Our Collection
+      </Button>
+
+      <Button
+        variant="outlined"
+        size="large"
+        component={Link}
+        to="/about"
+        sx={{ px: 4, py: 1.5, borderRadius: 2, borderWidth: 2 }}
+      >
+        Learn Our Story
+      </Button>
+    </Box>
+  </Box>
+</Box>
+
+
       {/* Hero Carousel */}
       <Box sx={{ bgcolor: "#f0f0f0", py: { xs: 2, sm: 4, md: 6 } }}>
         <Container maxWidth="lg" sx={{ display: "flex", justifyContent: "center" }}>
@@ -54,50 +121,41 @@ const HomePage: React.FC = () => {
         </Container>
       </Box>
 
-      {/* Welcome Section */}
-      <Box py={12} bgcolor="#ffffff">
-        <Container maxWidth="md">
-          <Box
-            textAlign="center"
-            display="flex"
-            flexDirection="column"
-            alignItems="center"
-            gap={3}
+      <Box py={8} sx={{ bgcolor: "#f8fafc" }}>
+        <Container maxWidth="sm">
+          <Paper
+            elevation={6}
+            sx={{
+              p: 4,
+              borderRadius: 3,
+              textAlign: "center",
+              display: "flex",
+              flexDirection: "column",
+              gap: 2,
+            }}
           >
-            <Typography variant="h3" fontWeight="bold" color="text.primary" gutterBottom>
-              Welcome to Woolly Wonders
+            <Typography variant="h5" fontWeight="bold">
+              Contact Us
             </Typography>
 
-            <Typography variant="h6" color="text.secondary" mb={4} lineHeight={1.7}>
-              Since 2013, we've been bringing authentic Himalayan craftsmanship to Delaware 
-              and beyond. Every piece in our collection is handmade with care by skilled 
-              artisans in Nepal.
+            <Typography variant="body1" color="text.secondary">
+              Text us at: <Box component="span" fontWeight="bold">302-563-0058</Box>
             </Typography>
 
-            {/* Buttons */}
-            <Box display="flex" flexWrap="wrap" gap={2} justifyContent="center">
-              <Button
-                variant="contained"
-                size="large"
-                component={Link}
-                to="/products"
-                endIcon={<ArrowRightAltIcon />}
-                sx={{ px: 4, py: 1.5, borderRadius: 2 }}
-              >
-                Shop Our Collection
-              </Button>
+            <Typography variant="body1" color="text.secondary">
+              Visit us at: <Box component="span" fontWeight="bold">Baltimore Christmas Village, West Shore Park</Box>
+            </Typography>
 
-              <Button
-                variant="outlined"
-                size="large"
-                component={Link}
-                to="/about"
-                sx={{ px: 4, py: 1.5, borderRadius: 2, borderWidth: 2 }}
-              >
-                Learn Our Story
-              </Button>
-            </Box>
-          </Box>
+            <Button
+              variant="contained"
+              size="large"
+              component={Link}
+              to="/contact"
+              sx={{ mt: 2, px: 4, py: 1.5, borderRadius: 2 }}
+            >
+              Send a Message
+            </Button>
+          </Paper>
         </Container>
       </Box>
 

@@ -12,7 +12,6 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 
 import MenuIcon from '@mui/icons-material/Menu';
-import TerrainIcon from '@mui/icons-material/Terrain';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import ListItemButton from '@mui/material/ListItemButton';
 
@@ -52,7 +51,15 @@ const Header: React.FC = () => {
               color: "white"
             }}
           >
-            <TerrainIcon sx={{ fontSize: 40, color: "#93c5fd", mr: 1 }} />
+            {/* Logo Image */}
+            <Box
+              component="img"
+              src="/woolly-wonders.png"
+              alt="Woolly Wonders Logo"
+              sx={{ width: 40, height: 40, mr: 1 }}
+            />
+
+            {/* Text next to the logo */}
             <Box>
               <Typography variant="h5" sx={{ fontWeight: "bold", lineHeight: 1 }}>
                 Woolly Wonders
@@ -62,7 +69,6 @@ const Header: React.FC = () => {
               </Typography>
             </Box>
           </Box>
-
           {/* Desktop Navigation */}
           <Box sx={{ display: { xs: "none", md: "flex" }, gap: 3 }}>
             {navLinks.map((link) => (
@@ -89,7 +95,7 @@ const Header: React.FC = () => {
           {/* Desktop Location */}
           <Box sx={{ display: { xs: "none", lg: "flex" }, alignItems: "center", gap: 1 }}>
             <LocationOnIcon sx={{ fontSize: 18 }} />
-            <Typography variant="body2">Delaware, USA</Typography>
+            <Typography variant="body2">Chrishmas Village - Baltimore, USA</Typography>
           </Box>
 
           {/* Mobile Menu Button */}

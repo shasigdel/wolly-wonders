@@ -95,7 +95,6 @@ const Footer: React.FC = () => {
             <Box sx={{ color: "#cbd5e1", fontSize: "0.9rem" }}>
               <Typography>✓ Ethical Craftsmanship</Typography>
               <Typography>✓ Sustainable Sourcing</Typography>
-              <Typography>✓ Fair Trade Practices</Typography>
               <Typography>✓ Community Support</Typography>
             </Box>
           </Box>

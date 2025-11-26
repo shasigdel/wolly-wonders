@@ -94,7 +94,7 @@ const AboutPage: React.FC = () => {
             flexDirection: { xs: "column", md: "row" }, // responsive layout
           }}
         >
-          <Avatar sx={{ bgcolor: "primary.light", color: "primary.main" }}>
+          <Avatar sx={{ bgcolor: "primary.light", color: "primary.white" }}>
             {milestone.icon}
           </Avatar>
           <Box>

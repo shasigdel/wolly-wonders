@@ -11,19 +11,19 @@ const ContactPage: React.FC = () => {
     {
       icon: <LocationOnIcon fontSize="large" />,
       title: 'Location',
-      details: ['Delaware, USA', 'Find us at local Christmas markets'],
+      details: ['Baltimore, USA', 'Find us at Baltimore Christmas Village - West Shore Park'],
       color: 'primary.main',
     },
     {
       icon: <PhoneIcon fontSize="large" />,
       title: 'Phone',
-      details: ['Text us for inquiries', 'Quick response guaranteed'],
+      details: ['Text us at +1 302 563 0058', 'Quick response guaranteed'],
       color: 'success.main',
     },
     {
       icon: <MailIcon fontSize="large" />,
       title: 'Social Media',
-      details: ['Follow us for updates', 'See new arrivals first'],
+      details: ['Follow us in Facebook - Woolly Wonders', 'See new arrivals first'],
       color: 'error.main',
     },
     {
@@ -114,7 +114,7 @@ const ContactPage: React.FC = () => {
             {
               question: 'Where can I see your products in person?',
               answer:
-                "We participate in Christmas markets throughout the season. Contact us to find out where we'll be next!",
+                "We participate in Christmas Village throughout November in Baltimore. Contact us to find out where we'll be next!",
             },
             {
               question: 'Do you offer custom orders?',
