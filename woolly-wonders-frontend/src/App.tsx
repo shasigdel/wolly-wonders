@@ -10,11 +10,13 @@ import ContactPage from './pages/ContactPage';
 import ProductPage from './pages/ProductPage';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import ScrollToTop from './components/ScrollTop';
 
 
 const App: React.FC = () => {
   return (
     <Router>
+      <ScrollToTop />
       <CssBaseline />
       <Box display="flex" flexDirection="column" minHeight="100vh" bgcolor="background.default">
         <Header />

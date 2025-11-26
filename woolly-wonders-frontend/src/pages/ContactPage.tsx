@@ -12,31 +12,31 @@ const ContactPage: React.FC = () => {
       icon: <LocationOnIcon fontSize="large" />,
       title: 'Location',
       details: ['Delaware, USA', 'Find us at local Christmas markets'],
-      color: 'primary.main'
+      color: 'primary.main',
     },
     {
       icon: <PhoneIcon fontSize="large" />,
       title: 'Phone',
       details: ['Text us for inquiries', 'Quick response guaranteed'],
-      color: 'success.main'
+      color: 'success.main',
     },
     {
       icon: <MailIcon fontSize="large" />,
       title: 'Social Media',
       details: ['Follow us for updates', 'See new arrivals first'],
-      color: 'error.main'
+      color: 'error.main',
     },
     {
       icon: <AccessTimeIcon fontSize="large" />,
       title: 'Market Hours',
       details: ['Visit us at Christmas markets', 'Seasonal availability'],
-      color: 'warning.main'
-    }
+      color: 'warning.main',
+    },
   ];
 
   return (
     <div>
-      {/* Hero Section */}
+      {/* HERO */}
       <Box sx={{ bgcolor: 'primary.main', color: 'white', py: 8, textAlign: 'center' }}>
         <Typography variant="h2" component="h1" gutterBottom>
           Get In Touch
@@ -46,7 +46,7 @@ const ContactPage: React.FC = () => {
         </Typography>
       </Box>
 
-      {/* Contact Cards */}
+      {/* CONTACT CARDS */}
       <Box sx={{ py: 8, bgcolor: 'background.default' }}>
         <Box
           sx={{
@@ -77,9 +77,11 @@ const ContactPage: React.FC = () => {
               >
                 {info.icon}
               </Avatar>
+
               <Typography variant="h6" gutterBottom>
                 {info.title}
               </Typography>
+
               {info.details.map((detail, idx) => (
                 <Typography variant="body2" color="text.secondary" key={idx}>
                   {detail}
@@ -90,10 +92,10 @@ const ContactPage: React.FC = () => {
         </Box>
       </Box>
 
-      {/* Contact Form */}
+      {/* CONTACT FORM */}
       <Contact />
 
-      {/* FAQ Section */}
+      {/* FAQ */}
       <Box sx={{ py: 8, bgcolor: 'grey.100' }}>
         <Box
           sx={{
@@ -111,15 +113,18 @@ const ContactPage: React.FC = () => {
           {[
             {
               question: 'Where can I see your products in person?',
-              answer: 'We participate in Christmas markets throughout the season. Contact us to find out where we\'ll be next!',
+              answer:
+                "We participate in Christmas markets throughout the season. Contact us to find out where we'll be next!",
             },
             {
               question: 'Do you offer custom orders?',
-              answer: 'Yes! We work with our artisans in Nepal to create custom pieces. Send us a message with your requirements.',
+              answer:
+                'Yes! We work with our artisans in Nepal to create custom pieces. Send us a message with your requirements.',
             },
             {
               question: 'How long does shipping take?',
-              answer: 'Contact us for current shipping times. Each piece is handmade, so timing may vary based on availability.',
+              answer:
+                'Contact us for current shipping times. Each piece is handmade, so timing may vary based on availability.',
             },
           ].map((faq, idx) => (
             <Paper sx={{ p: 3 }} key={idx}>

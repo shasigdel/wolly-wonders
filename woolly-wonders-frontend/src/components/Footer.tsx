@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
 
 import TerrainIcon from "@mui/icons-material/Terrain";
@@ -21,9 +20,17 @@ const Footer: React.FC = () => {
       }}
     >
       <Box sx={{ maxWidth: "1200px", mx: "auto" }}>
-        <Grid container spacing={4} mb={6}>
+        {/* Main Columns */}
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", md: "row" },
+            gap: 5,
+            mb: 6,
+          }}
+        >
           {/* Brand Section */}
-          <Grid item xs={12} md={6}>
+          <Box sx={{ flex: 1 }}>
             <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
               <TerrainIcon sx={{ fontSize: 36, color: "#93c5fd", mr: 1 }} />
               <Typography variant="h5" fontWeight="bold">
@@ -39,10 +46,10 @@ const Footer: React.FC = () => {
             <Typography variant="body2" sx={{ color: "#94a3b8" }}>
               Delaware, USA • Handcrafted in Nepal
             </Typography>
-          </Grid>
+          </Box>
 
           {/* Quick Links */}
-          <Grid item xs={12} md={3}>
+          <Box sx={{ flex: 1 }}>
             <Typography
               variant="h6"
               fontWeight="bold"
@@ -73,10 +80,10 @@ const Footer: React.FC = () => {
                 </Typography>
               ))}
             </Box>
-          </Grid>
+          </Box>
 
           {/* Values */}
-          <Grid item xs={12} md={3}>
+          <Box sx={{ flex: 1 }}>
             <Typography
               variant="h6"
               fontWeight="bold"
@@ -91,8 +98,8 @@ const Footer: React.FC = () => {
               <Typography>✓ Fair Trade Practices</Typography>
               <Typography>✓ Community Support</Typography>
             </Box>
-          </Grid>
-        </Grid>
+          </Box>
+        </Box>
 
         <Divider sx={{ borderColor: "#334155", mb: 3 }} />
 

@@ -1,6 +1,18 @@
 import React, { useState } from 'react';
-import { Phone } from '@mui/icons-material';
-import { TextField, Button, Paper, Typography, Box, Alert } from '@mui/material';
+import { Phone, ContentCopy } from '@mui/icons-material';
+import {
+  TextField,
+  Button,
+  Paper,
+  Typography,
+  Box,
+  Alert,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  IconButton,
+} from '@mui/material';
 
 interface FormData {
   name: string;
@@ -12,10 +24,15 @@ const Contact: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     phone: '',
-    message: ''
+    message: '',
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [desktopDialog, setDesktopDialog] = useState(false);
+
+  const isMobileDevice = () => {
+    return /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+  };
 
   const handleSubmit = () => {
     if (!formData.name || !formData.phone || !formData.message) {
@@ -24,23 +41,39 @@ const Contact: React.FC = () => {
     }
 
     const myPhoneNumber = import.meta.env.VITE_PHONE_NUMBER;
-    // console.log(myPhoneNumber)
-    const smsBody =
-      `New Product Inquiry:\nName: ${formData.name}\nCustomer Phone: ${formData.phone}\nMessage: ${formData.message}`;
-    const smsLink = `sms:${myPhoneNumber}?body=${encodeURIComponent(smsBody)}`;
-    window.location.href = smsLink;
 
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: '', phone: '', message: '' });
-    }, 3000);
+    const smsBody = `New Product Inquiry:
+Name: ${formData.name}
+Customer Phone: ${formData.phone}
+Message: ${formData.message}`;
+
+    if (isMobileDevice()) {
+      const smsLink = `sms:${myPhoneNumber}?body=${encodeURIComponent(smsBody)}`;
+      window.location.href = smsLink;
+
+      setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+        setFormData({ name: '', phone: '', message: '' });
+      }, 3000);
+
+      return;
+    }
+
+    // Desktop → show popup
+    setDesktopDialog(true);
+  };
+
+  const handleCopy = () => {
+    const myPhoneNumber = import.meta.env.VITE_PHONE_NUMBER;
+    navigator.clipboard.writeText(myPhoneNumber);
+    alert('Phone number copied!');
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -87,6 +120,7 @@ const Contact: React.FC = () => {
                 required
                 fullWidth
               />
+
               <Button
                 variant="contained"
                 color="primary"
@@ -97,13 +131,41 @@ const Contact: React.FC = () => {
               >
                 Send Message via SMS
               </Button>
-              <Typography variant="caption" align="center" color="textSecondary">
-                Clicking submit will open your SMS app with your message pre-filled
+
+              <Typography variant="caption" align="center">
+                On mobile, this opens your SMS app.<br />
+                On desktop, you'll get our phone number to text manually.
               </Typography>
             </Box>
           </Paper>
         )}
       </Box>
+
+      {/* Desktop popup */}
+      <Dialog open={desktopDialog} onClose={() => setDesktopDialog(false)}>
+        <DialogTitle>Text Us</DialogTitle>
+
+        <DialogContent>
+          <Typography>
+            You're using a computer. SMS apps do not open on laptops.
+          </Typography>
+
+          <Typography sx={{ mt: 2, fontWeight: 'bold' }}>
+            Please text us at:
+          </Typography>
+
+          <Typography variant="h5" sx={{ mt: 1 }}>
+            {import.meta.env.VITE_PHONE_NUMBER}
+          </Typography>
+        </DialogContent>
+
+        <DialogActions>
+          <IconButton onClick={handleCopy}>
+            <ContentCopy />
+          </IconButton>
+          <Button onClick={() => setDesktopDialog(false)}>Close</Button>
+        </DialogActions>
+      </Dialog>
     </Box>
   );
 };

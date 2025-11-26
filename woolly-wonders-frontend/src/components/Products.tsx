@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Container, Grid, Card, CardMedia } from '@mui/material';
+import { Box, Container, Card, CardMedia } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 const products = [
@@ -13,9 +13,25 @@ const Products: React.FC = () => {
   return (
     <Box sx={{ py: 8, bgcolor: '#f0f4f8' }}>
       <Container maxWidth="lg">
-        <Grid container spacing={4} justifyContent="center">
+        <Box
+          sx={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 4,
+            justifyContent: 'center',
+          }}
+        >
           {products.map((image, index) => (
-            <Grid item xs={12} sm={6} md={3} key={index}>
+            <Box
+              key={index}
+              sx={{
+                width: {
+                  xs: '100%',
+                  sm: 'calc(50% - 16px)',
+                  md: 'calc(25% - 16px)'
+                }
+              }}
+            >
               <Card
                 sx={{
                   height: 250,
@@ -25,7 +41,10 @@ const Products: React.FC = () => {
                   cursor: 'pointer',
                   overflow: 'hidden',
                   borderRadius: 2,
-                  '&:hover img': { transform: 'scale(1.1)', transition: '0.5s' },
+                  '&:hover img': {
+                    transform: 'scale(1.1)',
+                    transition: '0.5s',
+                  },
                 }}
                 onClick={() => navigate('/contact')}
               >
@@ -40,9 +59,9 @@ const Products: React.FC = () => {
                   }}
                 />
               </Card>
-            </Grid>
+            </Box>
           ))}
-        </Grid>
+        </Box>
       </Container>
     </Box>
   );
